@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#03111f" />
+  <meta name="description" content="סימולטור לימודי אינטראקטיבי לצלילה אל ענקי הים העמוק" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Deep Sea Explorer</title>
+</head>
+<body>
+  <main id="app" aria-label="סימולטור צלילה לים העמוק">
+    <canvas id="ocean" aria-hidden="true"></canvas>
+
+    <header class="hud top-hud">
+      <div>
+        <span class="eyebrow">DEEP SEA EXPLORER</span>
+        <h1>מסע אל ענקי המעמקים</h1>
+      </div>
+      <button id="learnMode" class="icon-btn" type="button" aria-pressed="true">👁️ מצב לימודי</button>
+    </header>
+
+    <section class="depth-card hud" aria-live="polite">
+      <div class="depth-value"><span id="depth">0</span> מ׳</div>
+      <div id="zone">פני האוקיינוס</div>
+      <div class="depth-bar"><span id="depthFill"></span></div>
+    </section>
+
+    <section id="encounter" class="encounter hud hidden" aria-live="polite">
+      <div class="encounter-tag">יצור זוהה</div>
+      <h2 id="creatureName"></h2>
+      <p id="creatureLatin"></p>
+      <p id="creatureSize"></p>
+      <div class="encounter-actions">
+        <button id="detailsBtn" type="button">פרטים</button>
+        <button id="compareBtn" type="button">📏 השווה גודל</button>
+      </div>
+    </section>
+
+    <aside id="infoPanel" class="panel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+      <button class="close" data-close type="button" aria-label="סגור">×</button>
+      <span class="eyebrow">כרטיס יצור</span>
+      <h2 id="infoTitle"></h2>
+      <p id="infoLatin" class="latin"></p>
+      <div id="infoBody"></div>
+    </aside>
+
+    <aside id="comparePanel" class="panel compare-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+      <button class="close" data-close type="button" aria-label="סגור">×</button>
+      <span class="eyebrow">השוואת קנה מידה</span>
+      <h2 id="compareTitle"></h2>
+      <div class="scale-stage">
+        <div class="human-wrap">
+          <div class="human">●<br>│<br>╱ ╲</div>
+          <span>אדם 1.75 מ׳</span>
+        </div>
+        <div class="creature-scale-wrap">
+          <div id="scaleCreature" class="scale-creature"></div>
+          <span id="scaleLabel"></span>
+        </div>
+      </div>
+      <p class="note">ההשוואה סכמטית ונועדה להמחיש סדר גודל.</p>
+    </aside>
+
+    <div id="scrim" class="scrim hidden" data-close></div>
+
+    <footer class="controls hud">
+      <button id="upBtn" class="secondary" type="button">▲ עלה</button>
+      <button id="diveBtn" class="primary" type="button">▼ צלול עמוק יותר</button>
+      <button id="flashlightBtn" class="secondary" type="button" aria-pressed="false">🔦 פנס</button>
+    </footer>
+
+    <div id="flashlight" class="flashlight" aria-hidden="true"></div>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
